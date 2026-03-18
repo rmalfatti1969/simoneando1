@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deixe sua avaliação no Google</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+    font-family: sans-serif;
+  }
+
+  .card {
+    width: 480px;
+    background: linear-gradient(160deg, #f5f0e8 0%, #e8ede0 50%, #dde8d8 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    padding: 32px 28px 28px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+  }
+
+  /* Folhas decorativas */
+  .leaf-top-right {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 100px;
+    height: 120px;
+    opacity: 0.6;
+  }
+
+  /* Título */
+  .title-top {
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-size: 28px;
+    color: #2d6a35;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  /* Google logo area */
+  .google-line {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .google-line .prefix {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: #2d6a35;
+  }
+
+  .google-logo {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    vertical-align: middle;
+  }
+
+  .g-G { color: #4285F4; }
+  .g-o1 { color: #DB4437; }
+  .g-o2 { color: #F4B400; }
+  .g-g { color: #4285F4; }
+  .g-l { color: #0F9D58; }
+  .g-e { color: #DB4437; }
+  .g-ex { color: #F4B400; font-style: italic; }
+
+  .sparkle {
+    color: #d4a017;
+    font-size: 18px;
+    vertical-align: middle;
+  }
+
+  .underline-google {
+    width: 160px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4a017, transparent);
+    margin: 4px auto 16px;
+    border-radius: 2px;
+  }
+
+  /* Área central com foto e celular */
+  .content-area {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    min-height: 220px;
+  }
+
+  .photo-side {
+    flex: 1;
+    position: relative;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #c8b89a 0%, #a89070 50%, #8a7055 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* Celular mockup */
+  .phone-side {
+    width: 160px;
+    flex-shrink: 0;
+  }
+
+  .phone-mockup {
+    background: #1a1a1a;
+    border-radius: 18px;
+    padding: 10px 7px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+
+  .phone-screen {
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+
+  .phone-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    font-size: 9px;
+    color: #555;
+  }
+
+  .phone-search-bar .search-icon {
+    color: #888;
+    font-size: 10px;
+  }
+
+  .phone-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 6px;
+  }
+
+  .phone-star {
+    color: #F4B400;
+    font-size: 16px;
+  }
+
+  .phone-input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px;
+    font-size: 9px;
+    color: #aaa;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+
+  .phone-btn {
+    background: #4285F4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 9px;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  /* Botão CTA */
+  .cta-btn {
+    display: block;
+    width: 100%;
+    background: #2d6a35;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-bottom: 14px;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(45,106,53,0.35);
+    cursor: pointer;
+  }
+
+  .cta-btn:hover {
+    background: #1e4d25;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(45,106,53,0.45);
+  }
+
+  .cta-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Tagline */
+  .tagline {
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #7a4a2a;
+    font-size: 18px;
+  }
+
+  .tagline .heart { color: #c0392b; }
+  .tagline .diamond { color: #d4a017; }
+
+  /* SVG folha decorativa */
+  .deco-leaf {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 110px;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .deco-leaf-left {
+    position: absolute;
+    bottom: 60px;
+    left: -8px;
+    width: 60px;
+    opacity: 0.3;
+    pointer-events: none;
+    transform: rotate(20deg);
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Folha decorativa SVG canto superior direito -->
+  <svg class="deco-leaf" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 0 Q120 40 80 80 Q60 100 40 120 Q20 140 0 160 Q30 140 50 110 Q70 80 85 50 Q100 20 100 0Z" fill="#4a8a3a" opacity="0.8"/>
+    <path d="M90 10 Q50 60 30 130" stroke="#3a7a2a" stroke-width="1.5" fill="none"/>
+    <path d="M85 20 Q70 50 60 90" stroke="#3a7a2a" stroke-width="1" fill="none"/>
+    <path d="M95 15 Q80 45 65 85" stroke="#3a7a2a" stroke-width="1" fill="none"/>
+  </svg>
+
+  <!-- Título -->
+  <div class="title-top">Deixe sua avaliação</div>
+  <div class="google-line">
+    <span class="prefix">no </span>
+    <span class="google-logo">
+      <span class="g-G">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-l">l</span><span class="g-e">e</span>
+    </span>
+    <span class="g-ex">!</span>
+    <span class="sparkle"> ✦</span>
+  </div>
+  <div class="underline-google"></div>
+
+  <!-- Conteúdo central -->
+  <div class="content-area">
+    <div class="photo-side">
+      <!-- Substitua o src pela imagem real de acupuntura se quiser -->
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:80%;opacity:0.3">
+          <rect x="40" y="120" width="120" height="20" rx="4" fill="#fff"/>
+          <circle cx="100" cy="80" r="30" fill="#fff"/>
+          <line x1="70" y1="60" x2="50" y2="150" stroke="#fff" stroke-width="3"/>
+          <line x1="80" y1="55" x2="65" y2="145" stroke="#fff" stroke-width="3"/>
+          <line x1="90" y1="52" x2="80" y2="142" stroke="#fff" stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="phone-side">
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="phone-search-bar">
+            <span class="search-icon">🔍</span>
+            <span>Avalie sua experiência</span>
+          </div>
+          <div class="phone-stars">
+            <span class="phone-star">★</span>
+            <span class="phone-star">★</span>
+            <span class="phone-star">★</span>
+            <span class="phone-star">★</span>
+            <span class="phone-star">★</span>
+          </div>
+          <div class="phone-input">Escreva um comentário...</div>
+          <div class="phone-btn">Publicar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÃO CLICÁVEL WHATSAPP -->
+  <!-- 
+    ⚠️ INSTRUÇÕES:
+    Troque "5511999999999" pelo número do WhatsApp da Simone (apenas números, com DDI+DDD)
+    Exemplo: 5511987654321
+    
+    Você também pode editar a mensagem após "text="
+  -->
+  <a class="cta-btn" 
+     href="https://wa.me/5511983610756?text=Ol%C3%A1!%20%F0%9F%8C%BF%0AEspero%20que%20voc%C3%AA%20esteja%20se%20sentindo%20bem%2C%20em%20paz%20e%20com%20as%20energias%20renovadas.%20%0AEstou%20passando%20para%20fazer%20um%20pedido%20muito%20importante%20para%20mim%3A%20se%20voc%C3%AA%20gostou%20do%20seu%20atendimento%20e%20dos%20resultados%2C%20poderia%20tirar%20apenas%20um%20minutinho%20para%20me%20avaliar%20no%20Google%3F%20%E2%AD%90%E2%AD%90%E2%AD%90%E2%AD%90%E2%AD%90%0AIss%20me%20ajuda%20muito%20a%20crescer%20e%20permite%20que%20outras%20pessoas%20tamb%C3%A9m%20encontrem%20o%20seu%20caminho%20para%20o%20equil%C3%ADbrio%20e%20bem-estar.%0A%C3%89%20bem%20rapidinho%2C%20basta%20clicar%20no%20link%3A%20%F0%9F%91%89%20https%3A%2F%2Ftinyurl.com%2Fsimoneando%0AAgrade%C3%A7o%20de%20cora%C3%A7%C3%A3o%20pela%20confian%C3%A7a%20no%20meu%20trabalho.%20%0AQualquer%20d%C3%BAvida%20ou%20se%20quiser%20agendar%20a%20pr%C3%B3xima%20sess%C3%A3o%2C%20%C3%A9%20s%C3%B3%20me%20chamar!%0ACom%20carinho%2C%20Simone%20Ando%20%E2%9C%A8"
+     target="_blank">
+    Deixe sua avaliação
+  </a>
+
+  <div class="tagline">É rápido e fácil! <span class="heart">♥</span><span class="diamond"> ✦</span></div>
+
+</div>
+
+</body>
+</html>
